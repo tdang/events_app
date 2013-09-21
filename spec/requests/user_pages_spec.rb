@@ -9,6 +9,10 @@ describe "UserPages" do
     let!(:m1) { FactoryGirl.create(:micropost, user: user, content: "Foo") }
     let!(:m2) { FactoryGirl.create(:micropost, user: user, content: "Bar") }
 
+    let!(:e1) { FactoryGirl.create(:event, user: user, content: "Foo") }
+    let!(:e2) { FactoryGirl.create(:event, user: user, content: "Bar") }
+
+
     before { visit user_path(user) }
 
     it { should have_content(user.name) }
@@ -19,6 +23,12 @@ describe "UserPages" do
       it { should have_content(m2.content) }
       it { should have_content(user.microposts.count) }
     end
+
+    describe "events" do
+      it { should have_content(e1.content) }
+      it { should have_content(e2.content) }
+    end
+
 
     describe "follow/unfollow buttons" do
       let(:other_user) { FactoryGirl.create(:user)}

@@ -14,4 +14,14 @@ FactoryGirl.define do
     content "Lorem ipsum"
     user
   end
+
+  factory :event do
+    name "Kizomba"
+    location "Dancey Ballroom"
+    start_date Date.new
+    end_date Date.new
+    price "10"
+    content "Lorem ipsum"
+    user
+  end
 end
